@@ -106,7 +106,7 @@ class Response
      *
      * @return bool
      */
-    public function isSuccess(): bool
+    public function isSuccessful(): bool
     {
         return $this->code() >= 200 && $this->code() < 300;
     }
