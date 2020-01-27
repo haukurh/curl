@@ -1,6 +1,6 @@
 <?php
 
-namespace Curl;
+namespace Haukurh\Curl;
 
 use InvalidArgumentException;
 
