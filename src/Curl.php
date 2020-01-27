@@ -58,7 +58,7 @@ class Curl
      */
     public function setEncoding(string $encoding): void
     {
-        if (!in_array($encoding, ['identity', 'deflate', 'gzip'])) {
+        if (!in_array($encoding, ['identity', 'deflate', 'gzip', ''])) {
             throw new InvalidArgumentException("Unsupported encoding: '{$encoding}'");
         }
         $this->encoding = $encoding;
