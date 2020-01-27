@@ -10,11 +10,9 @@ A simple PHP library wrapper for cURL to simplify the usage of cURL requests.
 require 'vendor/autoload.php';
 
 use Haukurh\Curl\Curl;
-use Haukurh\Curl\Response as CurlResponse;
 
 $curl = new Curl();
 
-/** @var Haukurh\Curl\Response $response */
 $response = $curl->get("http://example.com/feed.xml");
 
 if ($response->isOk()) {
