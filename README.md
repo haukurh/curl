@@ -21,6 +21,19 @@ if ($response->isOk()) {
     $xml = $response->body();
     // Do something with the XML
 }
+
+// Post something
+
+$fields = [
+    'title' => 'Some article title',
+    'content' => 'Some silly example content',
+];
+
+$postResponse = $curl->post("http://example.com/article/new", $fields);
+
+if ($response->isSuccessful()) {
+    // Be happy you post request was successful
+}
 ```
 
 ## Response
