@@ -99,7 +99,7 @@ class Response implements ResponseInterface
      */
     public function json(): ?stdClass
     {
-        if (strtolower($this->contentType()) === 'application/json') {
+        if (strpos(strtolower($this->contentType()), 'application/json') === false) {
             return json_decode($this->body, false);
         }
         return null;
