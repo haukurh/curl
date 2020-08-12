@@ -2,7 +2,9 @@
 
 namespace Haukurh\Curl;
 
-class Response
+use stdClass;
+
+class Response implements ResponseInterface
 {
     const HTTP_URL = 'url';
     const HTTP_CODE = 'http_code';
@@ -88,6 +90,19 @@ class Response
     public function body(): string
     {
         return $this->body;
+    }
+
+    /**
+     * Parse json response
+     *
+     * @return stdClass|null
+     */
+    public function json(): ?stdClass
+    {
+        if (strtolower($this->contentType()) === 'application/json') {
+            return json_decode($this->body, false);
+        }
+        return null;
     }
 
     /**
