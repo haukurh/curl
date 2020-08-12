@@ -81,7 +81,7 @@ class Curl
      * @param array $options
      * @return Response
      */
-    public function request(string $url, array $options = []): Response
+    public function request(string $url, array $options = []): ResponseInterface
     {
         $curl = curl_init($url);
 
@@ -108,7 +108,7 @@ class Curl
 
         curl_close($curl);
 
-        return new Response($info, $result);
+        return $this->response($info, $result);
     }
 
     /**
@@ -117,7 +117,7 @@ class Curl
      * @param string $url
      * @return Response
      */
-    public function get(string $url): Response
+    public function get(string $url): ResponseInterface
     {
         return $this->request($url);
     }
@@ -129,12 +129,24 @@ class Curl
      * @param array $payload
      * @return Response
      */
-    public function post(string $url, array $payload): Response
+    public function post(string $url, array $payload): ResponseInterface
     {
         $options = [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => $payload,
         ];
         return $this->request($url, $options);
+    }
+
+    /**
+     * Build the response
+     *
+     * @param array $info
+     * @param string $body
+     * @return ResponseInterface
+     */
+    protected function response(array $info, string $body): ResponseInterface
+    {
+        return new Response($info, $body);
     }
 }
