@@ -6,10 +6,10 @@ use stdClass;
 
 class Response implements ResponseInterface
 {
-    const HTTP_URL = 'url';
-    const HTTP_CODE = 'http_code';
-    const HTTP_CONTENT_TYPE = 'content_type';
-    const CURL_SIZE_DOWNLOAD = 'size_download';
+    protected const HTTP_URL = 'url';
+    protected const HTTP_CODE = 'http_code';
+    protected const HTTP_CONTENT_TYPE = 'content_type';
+    protected const CURL_SIZE_DOWNLOAD = 'size_download';
 
     protected $info = [];
     protected $body;
@@ -99,7 +99,7 @@ class Response implements ResponseInterface
      */
     public function json(): ?stdClass
     {
-        if (strpos(strtolower($this->contentType()), 'application/json') === false) {
+        if (stripos($this->contentType(), 'application/json') !== false) {
             return json_decode($this->body, false);
         }
         return null;
@@ -133,7 +133,7 @@ class Response implements ResponseInterface
      */
     public function saveTo(string $filename): void
     {
-        $stream = fopen($filename, 'w');
+        $stream = fopen($filename, 'wb');
         fwrite($stream, $this->body);
         fclose($stream);
     }
