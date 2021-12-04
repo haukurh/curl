@@ -10,7 +10,7 @@ class Curl
     protected $encoding = '';
     protected $maxRedirects = 3;
     protected $followLocation = true;
-    protected $userAgent = "PHP cURL Library/1.0 (https://github.com/haukurh/curl)";
+    protected $userAgent = "PHP cURL Library/1.2 (https://github.com/haukurh/curl)";
     protected $options;
     protected $headers = [];
 
