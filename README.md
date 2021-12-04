@@ -50,6 +50,10 @@ echo $response->contentType(); // text/xml;
 echo $response->size(); // 3510
 
 $body = $response->body();
+
+$json = $response->json(); // Json payload as ?stdClass
+$array = (array)$response->json(); // Json as an array
+
 ```
 
 ## Set some options
