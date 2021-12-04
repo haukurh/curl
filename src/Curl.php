@@ -164,6 +164,59 @@ class Curl
     }
 
     /**
+     * Make a PUT request with cURL
+     *
+     * @param string $url
+     * @param array|string $payload
+     * @param array $headers
+     * @return Response
+     */
+    public function put(string $url, $payload = null, array $headers = []): ResponseInterface
+    {
+        $options = [
+            CURLOPT_CUSTOMREQUEST => 'PUT',
+        ];
+        if ($payload) {
+            $options[CURLOPT_POSTFIELDS] = $payload;
+        }
+        return $this->request($url, $options, $headers);
+    }
+
+    /**
+     * Make a DELETE request with cURL
+     *
+     * @param string $url
+     * @param array|string $payload
+     * @param array $headers
+     * @return Response
+     */
+    public function delete(string $url, $payload = null, array $headers = []): ResponseInterface
+    {
+        $options = [
+            CURLOPT_CUSTOMREQUEST => 'DELETE',
+        ];
+        if ($payload) {
+            $options[CURLOPT_POSTFIELDS] = $payload;
+        }
+        return $this->request($url, $options, $headers);
+    }
+
+    /**
+     * Make a HEAD request with cURL
+     *
+     * @param string $url
+     * @param array $headers
+     * @return ResponseInterface
+     */
+    public function head(string $url, array $headers = []): ResponseInterface
+    {
+        $options = [
+            CURLOPT_NOBODY => true,
+        ];
+        return $this->request($url, $options, $headers);
+    }
+
+    /**
      * Build the response
      *
      * @param array $info
