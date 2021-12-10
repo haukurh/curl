@@ -60,7 +60,7 @@ interface ResponseInterface
     /**
      * Parse json response
      *
-     * @return stdClass|null
+     * @return stdClass|array|null
      */
     public function json(): ?stdClass;
 

@@ -95,9 +95,9 @@ class Response implements ResponseInterface
     /**
      * Parse json response
      *
-     * @return stdClass|null
+     * @return stdClass|array|null
      */
-    public function json(bool $associative = false): ?stdClass
+    public function json(bool $associative = false)
     {
         if (stripos($this->contentType(), 'application/json') !== false) {
             return json_decode($this->body, $associative);
