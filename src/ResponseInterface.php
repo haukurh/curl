@@ -62,7 +62,7 @@ interface ResponseInterface
      *
      * @return stdClass|array|null
      */
-    public function json(): ?stdClass;
+    public function json(bool $associative = false);
 
     /**
      * Returns true if the http response code is 200, false otherwise
