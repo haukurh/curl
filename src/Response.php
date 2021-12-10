@@ -97,10 +97,10 @@ class Response implements ResponseInterface
      *
      * @return stdClass|null
      */
-    public function json(): ?stdClass
+    public function json(bool $associative = false): ?stdClass
     {
         if (stripos($this->contentType(), 'application/json') !== false) {
-            return json_decode($this->body, false);
+            return json_decode($this->body, $associative);
         }
         return null;
     }
